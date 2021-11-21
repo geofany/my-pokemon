@@ -21,10 +21,10 @@ function Card() {
 
   return (
     <div className="grid grid-cols-12 bg-white rounded p-5 gap-4">
-      <div className="col-span-5">
+      <div className="col-span-12 sm:col-span-5">
         <Img selectedPokemon={selectedPokemon} />
       </div>
-      <div className="col-span-7 flex flex-col justify-between gap-4">
+      <div className="col-span-12 sm:col-span-7 flex flex-col justify-between gap-4">
         <div className="flex flex-col gap-3">
           <Title selectedPokemon={selectedPokemon} />
           <Info selectedPokemon={selectedPokemon} />

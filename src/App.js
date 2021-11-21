@@ -84,9 +84,10 @@ function App() {
           <MyPokemon
             menuActive={menuActive}
             setmenuActive={setmenuActive}
-          >
-            C
-          </MyPokemon>
+            pokemon={pokemon}
+            setDetail={setDetail}
+            setSelected={setSelected}
+          />
         </div>
       </div>
       <Footer />

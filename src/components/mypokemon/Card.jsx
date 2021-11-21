@@ -1,5 +1,5 @@
 import React from 'react'
-import Type from './Type'
+import Type from '../pokedex/Type'
 
 function Card(props) {
   return (
@@ -8,6 +8,7 @@ function Card(props) {
       onClick={() => {
         props.setDetail(true)
         props.setSelected(props.pokemon.name)
+        props.setmenuActive('pokedex')
       }}>
       <img src={props.pokemon.img} alt="pokemon" className="w-full h-auto border rounded-lg group-hover:border-dark-60 transform ease-out duration-300" />
       <div className="flex items-center justify-between">
@@ -19,7 +20,7 @@ function Card(props) {
         </p>
       </div>
       <p className="text-lg font-bold capitalize">
-        {props.pokemon.name}
+        Mang Ujang ({props.pokemon.name})
       </p>
       <div className="grid grid-cols-2 gap-2">
         {
@@ -28,6 +29,9 @@ function Card(props) {
           ))
         }
       </div>
+      <button className="bg-danger-60 py-1 text-white hover:bg-danger-70 rounded">
+        Remove Pokemon
+      </button>
     </div>
   )
 }
