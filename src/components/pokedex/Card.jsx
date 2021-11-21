@@ -3,7 +3,12 @@ import Type from './Type'
 
 function Card(props) {
   return (
-    <div className="col-span-12 md:col-span-4 bg-white hover:bg-primary-10 transform ease-out duration-300 rounded p-5 flex flex-col gap-2 cursor-pointer" onClick={() => props.setDetail(true)}>
+    <div
+      className="col-span-12 md:col-span-4 bg-white hover:bg-primary-10 transform ease-out duration-300 rounded p-5 flex flex-col gap-2 cursor-pointer"
+      onClick={() => {
+        props.setDetail(true)
+        props.setSelected(props.pokemon.name)
+      }}>
       <img src={props.pokemon.img} alt="pokemon" className="w-full h-auto border rounded-lg" />
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-60 font-bold">
@@ -18,7 +23,7 @@ function Card(props) {
       </p>
       <div className="grid grid-cols-2 gap-2">
         {
-          props.pokemon.types.map( type => (
+          props.pokemon.types.map(type => (
             <Type key={type} type={type} />
           ))
         }

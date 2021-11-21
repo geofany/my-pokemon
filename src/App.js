@@ -53,7 +53,8 @@ function App() {
       types: ['fire', 'flying'],
       moves: ['mega-punch', 'fire-punch', 'thunder-punch', 'scratch', 'swords-dance', 'cut', 'wing-attack', 'fly']
     }
-  ]
+  ];
+  const [selected, setSelected] = useState('');
 
   return (
     <div className="flex flex-col h-screen w-screen">
@@ -70,17 +71,16 @@ function App() {
             pokemon={pokemon}
             detail={detail}
             setDetail={setDetail}
-          >
-            A
-          </Pokedex>
+            setSelected={setSelected}
+          />
           <Detail
             menuActive={menuActive}
             setmenuActive={setmenuActive}
             detail={detail}
             setDetail={setDetail}
-          >
-            BB
-          </Detail>
+            selected={selected}
+            setSelected={setSelected}
+          />
           <MyPokemon
             menuActive={menuActive}
             setmenuActive={setmenuActive}

@@ -19,11 +19,6 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
-      borderWidth: {
-        3: '3px',
-        5: '5px',
-        6: '6px'
-      },
       colors: {
         primary: {
           10: '#cdd7e9',
@@ -144,6 +139,11 @@ module.exports = {
         h1: '46px'
       },
       spacing: {
+      },
+      backgroundImage: {
+        'split-primary-danger': 'linear-gradient(to bottom, #2f538f 50% , #EF5350 50%)',
+        'split-warning-warning' : 'linear-gradient(to bottom, #FECA1B 50% , #b18d13 50%)',
+        'split-primary-gray' : 'linear-gradient(to bottom, #5579b5 50% , #b3b3b3 50%)'
       }
     },
   },

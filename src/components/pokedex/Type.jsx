@@ -11,7 +11,7 @@ function Type(props) {
         setStyle('bg-success-90 text-white')
         break
       case 'dragon':
-        setStyle('bg-gradient-to-b from-primary-70 to-danger-60 text-white')
+        setStyle('bg-split-primary-danger text-white')
         break
       case 'fairy':
         setStyle('bg-danger-30 text-dark-60')
@@ -23,7 +23,7 @@ function Type(props) {
         setStyle('bg-secondary-60 text-white')
         break
       case 'ground':
-        setStyle('bg-gradient-to-b from-warning-40 to-warning-60 text-dark-60')
+        setStyle('bg-split-warning-warning text-dark-60')
         break
       case 'normal':
         setStyle('bg-gray-60 text-dark-60')
@@ -38,19 +38,19 @@ function Type(props) {
         setStyle('bg-dark-60 text-white')
         break
       case 'electric':
-        setStyle('bg-warning-60 text-white')
+        setStyle('bg-warning-60 text-dark-60')
         break
       case 'fighting':
         setStyle('bg-warning-90 text-white')
         break
       case 'flying':
-        setStyle('bg-gradient-to-b from-primary-40 to-gray-40 text-white')
+        setStyle('bg-split-primary-gray text-dark-60')
         break
       case 'grass':
-        setStyle('bg-success-60 text-white')
+        setStyle('bg-success-60 text-dark-60')
         break
       case 'ice':
-        setStyle('bg-primary-60 text-white')
+        setStyle('bg-primary-60 text-dark-60')
         break
       case 'poison':
         setStyle('bg-secondary-70 text-white')
