@@ -1,4 +1,3 @@
-import './App.css';
 import { useState } from 'react';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
@@ -63,7 +62,7 @@ function App() {
         setmenuActive={setmenuActive}
         setDetail={setDetail}
       />
-      <div className="flex-1 overflow-hidden">
+      <main className="flex-1 overflow-hidden">
         <div className="overflow-auto h-full">
           <Pokedex
             menuActive={menuActive}
@@ -89,7 +88,7 @@ function App() {
             setSelected={setSelected}
           />
         </div>
-      </div>
+      </main>
       <Footer />
     </div>
   );
