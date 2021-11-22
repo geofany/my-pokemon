@@ -18,7 +18,7 @@ function Card(props) {
       className="col-span-12 md:col-span-4 bg-white hover:bg-primary-10 transform ease-out duration-300 rounded p-5 flex flex-col gap-2 cursor-pointer group"
       onClick={() => {
         props.setDetail(true)
-        props.setSelected(props.pokemon.name)
+        props.setSelected(props.pokemon.id)
       }}>
       <img
         src={img}

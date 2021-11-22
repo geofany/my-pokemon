@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import TestApi from './components/TestApi';
 
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Pokedex from './components/pokedex/Index';
-// import Detail from './components/detail/Index';
+import Detail from './components/detail/Index';
 // import MyPokemon from './components/mypokemon/Index';
 
 function App() {
@@ -37,6 +36,14 @@ function App() {
               setmenuActive={setmenuActive}
               detail={detail}
               setDetail={setDetail}
+              setSelected={setSelected}
+            />
+            <Detail
+              menuActive={menuActive}
+              setmenuActive={setmenuActive}
+              detail={detail}
+              setDetail={setDetail}
+              selected={selected}
               setSelected={setSelected}
             />
           </div>
