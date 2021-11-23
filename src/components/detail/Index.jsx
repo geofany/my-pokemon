@@ -8,7 +8,7 @@ function Index(props) {
   let urlParams = useParams();
 
   return (
-    <div className={`flex flex-col gap-4 max-w-4xl mx-auto py-10`}>
+    <div className={`flex flex-col gap-4 max-w-4xl mx-3 md:mx-auto py-10`}>
       <Breadcrumb name={urlParams.pokemonName} />
       <Card />
     </div>

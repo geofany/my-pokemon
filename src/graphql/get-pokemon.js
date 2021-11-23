@@ -5,6 +5,8 @@ query pokemon($name: String!) {
   pokemon(name: $name) {
     id
     name
+    height
+    weight
     abilities {
       ability {
         name

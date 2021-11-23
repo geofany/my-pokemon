@@ -9,7 +9,7 @@ function Info(props) {
             Height
           </p>
           <p className="text-dark-60">
-            {props.selectedPokemon.height}
+            {props.height}
           </p>
         </div>
         <div>
@@ -17,7 +17,7 @@ function Info(props) {
             Weight
           </p>
           <p className="text-dark-60">
-            {props.selectedPokemon.weight}
+            {props.weight}
           </p>
         </div>
       </div>
@@ -26,9 +26,12 @@ function Info(props) {
           Abilities
         </p>
         {
-          props.selectedPokemon.abilities.map(ability => (
-            <p className="text-dark-60 capitalize">
-              {ability}
+          props.abilities.map(ability => (
+            <p
+              key={ability.ability.name}
+              className="text-dark-60 capitalize"
+            >
+              {ability.ability.name}
             </p>
           ))
         }
