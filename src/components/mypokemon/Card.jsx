@@ -1,5 +1,4 @@
 import React from 'react'
-import Type from '../pokedex/Type'
 
 function Card(props) {
   return (
@@ -22,13 +21,6 @@ function Card(props) {
       <p className="text-lg font-bold capitalize">
         Mang Ujang ({props.pokemon.name})
       </p>
-      <div className="grid grid-cols-2 gap-2">
-        {
-          props.pokemon.types.map(type => (
-            <Type key={type} type={type} />
-          ))
-        }
-      </div>
       <button className="bg-danger-60 py-1 text-white hover:bg-danger-70 rounded">
         Remove Pokemon
       </button>
