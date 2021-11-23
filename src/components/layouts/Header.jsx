@@ -1,32 +1,29 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import logo from '../../logo.png';
 
 function Header(props) {
+  let location  = useLocation();
   return (
     <header className="bg-danger-60 h-12 sm:h-24 flex-shrink-0 flex items-center justify-center text-sm sm:text-lg font-bold text-white gap-4">
-      <p
-        className={`hover:text-warning-60 cursor-pointer ${props.menuActive === 'pokedex' ? 'text-warning-60' : ''} transition ease-out duration-300`}
-        onClick={() => {
-          props.setmenuActive('pokedex')
-          props.setDetail(false)
-        }}
+      <Link
+        to="/"
+        className={`hover:text-warning-60 cursor-pointer ${location.pathname === '/' ? 'text-warning-60' : ''} transition ease-out duration-300`}
       >
         Pokédex
-      </p>
+      </Link>
       <img
         className="w-10 h-10 sm:w-20 sm:h-20"
         src={logo}
         alt="pokeball"
       />
-      <p
-        className={`hover:text-warning-60 cursor-pointer ${props.menuActive === 'mypokemon' ? 'text-warning-60' : ''} transition ease-out duration-300`}
-        onClick={() => {
-          props.setmenuActive('mypokemon')
-          props.setDetail(false)
-        }}
+      <Link
+        to="/mypokemon"
+        className={`hover:text-warning-60 cursor-pointer ${location.pathname === '/mypokemon' ? 'text-warning-60' : ''} transition ease-out duration-300`}
       >
         My Pokémon
-      </p>
+      </Link>
     </header>
   )
 }

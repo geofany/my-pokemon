@@ -1,28 +1,28 @@
-import { gql } from "graphql-tag";
+import { gql } from "@apollo/client";
 
-export const GET_POKEMONS = gql`
-  query pokemon_v2_pokemon($limit: Int!, $offset: Int!) {
-    pokemon_v2_pokemon(limit: $limit, offset:$offset) {
-      name
-      id
-      height
-      weight
-      pokemon_v2_pokemontypes {
-        pokemon_v2_type {
-          name
-        }
-      }
-      pokemon_v2_pokemonabilities {
-        pokemon_v2_ability {
-          name
-        }
-      }
-      pokemon_v2_pokemonmoves {
-        pokemon_v2_move {
-          name
-        }
+export const GET_POKEMON = gql`
+query pokemon($name: String!) {
+  pokemon(name: $name) {
+    id
+    name
+    abilities {
+      ability {
+        name
       }
     }
+    moves {
+      move {
+        name
+      }
+    }
+    types {
+      type {
+        name
+      }
+    }
+    sprites {
+      front_default
+    }
   }
+}
 `
-

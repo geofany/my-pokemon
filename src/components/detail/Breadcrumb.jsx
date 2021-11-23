@@ -1,13 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Breadcrumb(props) {
   return (
     <div className="flex items-center gap-1 text-md">
-      <p className="hover:text-warning-60 cursor-pointer transform ease-out duration-300" onClick={() => props.setDetail(false)}>
+      <Link
+        to="/"
+        className="hover:text-warning-60 cursor-pointer transform ease-out duration-300"
+      >
         Pokédex
-      </p>
+      </Link>
       <p className="text-gray-60 capitalize">
-        / {props.selected}
+        / {props.name}
       </p>
     </div>
   )

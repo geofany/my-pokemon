@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 import Breadcrumb from './Breadcrumb'
-import Card from './Card'
+import { useParams } from 'react-router';
+import Card from './Card';
+
 
 function Index(props) {
+  let urlParams = useParams();
+
   return (
-    <div className={`${props.menuActive === 'pokedex' && props.detail ? '' : 'hidden'} flex flex-col gap-4 max-w-4xl mx-auto py-10`}>
-      <Breadcrumb selected={props.selected} setDetail={props.setDetail} />
+    <div className={`flex flex-col gap-4 max-w-4xl mx-auto py-10`}>
+      <Breadcrumb name={urlParams.pokemonName} />
       <Card />
     </div>
   )
