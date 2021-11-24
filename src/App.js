@@ -21,24 +21,22 @@ function App() {
       <ApolloProvider client={client}>
         <main className="flex-1 overflow-hidden">
           <div className="overflow-auto h-full">
-            <Routes>
-              <Route index path='/' element={
-                <Pokedex />
-              }
-              />
-              <Route path=':pokemonName' element={
-                <PokemonContextProvider>
+            <PokemonContextProvider>
+              <Routes>
+                <Route index path='/' element={
+                  <Pokedex />
+                }
+                />
+                <Route path=':pokemonName' element={
                   <Detail />
-                </PokemonContextProvider>
-              }
-              />
-              <Route path='/mypokemon' element={
-                <PokemonContextProvider>
+                }
+                />
+                <Route path='/mypokemon' element={
                   <MyPokemon />
-                </PokemonContextProvider>
-              }
-              />
-            </Routes>
+                }
+                />
+              </Routes>
+            </PokemonContextProvider>
           </div>
         </main>
       </ApolloProvider>

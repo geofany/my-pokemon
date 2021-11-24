@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { PokemonContext } from '../../contexts/PokemonContext';
 
 function Card(props) {
+  const { myPokemons } = useContext(PokemonContext);
+  let count = myPokemons.filter(pokemon => pokemon.name === props.pokemon.name).length
   return (
     <Link
       to={`${props.pokemon.name}`}
@@ -17,7 +20,7 @@ function Card(props) {
           #{props.pokemon.id}
         </p>
         <p className="text-sm text-gray-90 font-light">
-          Total Owned : 10
+          Total Owned : {count}
         </p>
       </div>
       <p className="text-lg font-bold capitalize">

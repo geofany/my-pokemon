@@ -14,11 +14,12 @@ import { PokemonContext } from '../../contexts/PokemonContext'
 function Card() {
   let urlParams = useParams();
 
-  const { dispatch } = useContext(PokemonContext);
+  const { myPokemons, dispatch } = useContext(PokemonContext);
 
   let [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [catched, setCatched] = useState(false)
+  const [duplicate, setDuplicate] = useState(false)
 
   const { loading, error, data } = useQuery(GET_POKEMON, {
     variables: { name: urlParams.pokemonName }
@@ -44,12 +45,15 @@ function Card() {
   }
 
   function nameHandler(event) {
+    let nickname = myPokemons.find(pokemon => pokemon.nickname === event.target.value)
+    setDuplicate(nickname ? true : false)
     setName(event.target.value)
   }
 
   if (data) {
     const pokemon = data.pokemon
     const { sprites, moves, types, abilities } = pokemon
+    let count = myPokemons.filter(pokemons => pokemons.name === pokemon.name).length
     return (
       <>
         <div className="grid grid-cols-12 bg-white rounded p-5 gap-4">
@@ -75,7 +79,7 @@ function Card() {
             </div>
             <div className="flex flex-col">
               <p className="text-sm text-gray-60">
-                Total Owned : 10
+                Total Owned : {count}
               </p>
               <BtnCatch gacha={gacha} openModal={openModal} />
             </div>
@@ -156,15 +160,21 @@ function Card() {
                       name="name"
                       type="text"
                       value={name}
-                      className="border border-gray-60 rounded px-2 py-1 focus:outline-none focus:border-gray-90 w-full"
+                      className={`border rounded px-2 py-1 focus:outline-none w-full ${duplicate ? 'border-danger-60' : 'border-gray-60 focus:border-gray-90'}`}
                       onChange={nameHandler}
                     />
+                    <div>
+                      <small className={`text-danger-60 ${duplicate ? '' : 'hidden'}`}>
+                        Name already exist!
+                      </small>
+                    </div>
                   </div>
 
                   <div className="mt-4 flex justify-end">
                     <button
                       type="button"
-                      className={`${catched ? '' : 'hidden'} inline-flex justify-center px-4 py-2 text-sm font-medium text-success-60 bg-success-10 border border-transparent rounded-md hover:bg-success-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-success-50`}
+                      disabled={duplicate ? true : false}
+                      className={`${catched ? '' : 'hidden'} ${duplicate ? 'text-gray-60 bg-gray-10 cursor-not-allowed' : 'text-success-60 bg-success-10 hover:bg-success-20'} inline-flex justify-center px-4 py-2 text-sm font-medium border border-transparent rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-success-50`}
                       onClick={() => {
                         closeModal()
                         dispatch({
@@ -176,6 +186,7 @@ function Card() {
                             nickname: name
                           }
                         })
+                        setName('')
                       }}
                     >
                       Save!
