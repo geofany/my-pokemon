@@ -102,6 +102,7 @@ function Card() {
         <Modal
           dispatch={dispatch}
           isOpen={isOpen}
+          setIsOpen={setIsOpen}
           name={name}
           catched={catched}
           duplicate={duplicate}
