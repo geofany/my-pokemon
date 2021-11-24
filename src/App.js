@@ -7,6 +7,7 @@ import Footer from './components/layouts/Footer';
 import Pokedex from './components/pokedex/Index';
 import Detail from './components/detail/Index';
 import MyPokemon from './components/mypokemon/Index';
+import PokemonContextProvider from './contexts/PokemonContext';
 
 function App() {
 
@@ -22,17 +23,19 @@ function App() {
           <div className="overflow-auto h-full">
             <Routes>
               <Route index path='/' element={
-
                 <Pokedex />
-
               }
               />
               <Route path=':pokemonName' element={
-                <Detail />
+                <PokemonContextProvider>
+                  <Detail />
+                </PokemonContextProvider>
               }
               />
               <Route path='/mypokemon' element={
-                <MyPokemon />
+                <PokemonContextProvider>
+                  <MyPokemon />
+                </PokemonContextProvider>
               }
               />
             </Routes>

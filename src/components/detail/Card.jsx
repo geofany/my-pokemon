@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import BtnCatch from './BtnCatch';
 import Type from './Type';
 import Img from './Img';
@@ -9,9 +9,12 @@ import { Dialog, Transition } from '@headlessui/react';
 import { GET_POKEMON } from '../../graphql/get-pokemon';
 import { useQuery } from '@apollo/react-hooks';
 import { useParams } from 'react-router';
+import { PokemonContext } from '../../contexts/PokemonContext'
 
 function Card() {
   let urlParams = useParams();
+
+  const { dispatch } = useContext(PokemonContext);
 
   let [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
@@ -90,7 +93,7 @@ function Card() {
             </div>
           </div>
         </div>
-        
+
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog
             static
@@ -162,7 +165,18 @@ function Card() {
                     <button
                       type="button"
                       className={`${catched ? '' : 'hidden'} inline-flex justify-center px-4 py-2 text-sm font-medium text-success-60 bg-success-10 border border-transparent rounded-md hover:bg-success-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-success-50`}
-                      onClick={closeModal}
+                      onClick={() => {
+                        closeModal()
+                        dispatch({
+                          type: 'ADD_POKEMON',
+                          pokemon: {
+                            id: data.pokemon.id,
+                            name: data.pokemon.name,
+                            img: data.pokemon.sprites.front_default,
+                            nickname: name
+                          }
+                        })
+                      }}
                     >
                       Save!
                     </button>
